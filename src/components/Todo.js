@@ -2,21 +2,17 @@
 import React from "react";
 const Todo = ({ todos, handleComplete }) => {
     return (
-      <div>
-        <h2>Child</h2>
-        {todos.map((item, idx) => (
-          <div key={item.id}>
-            <ul>
-              <li>
-                {item.name}
-                {!item.complete && (
-                  <button onClick={() => handleComplete(idx)}>Complete</button>
-                )}
-              </li>
-            </ul>
-          </div>
-        ))}
-      </div>
+      <ul>
+      <h2>Child Component</h2>
+      {todos.map((item, index) => (
+        <li key={index}>
+          {item.name}
+          {!item.complete && (
+            <button onClick={() => handleComplete(index)}>Complete</button>
+          )}
+        </li>
+      ))}
+    </ul>
     );
   };
   export default Todo;

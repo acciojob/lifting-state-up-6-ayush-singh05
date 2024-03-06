@@ -17,7 +17,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Child Component</h1>
+      <h1>Parent Component</h1>
       <Todo todos={todos} handleComplete={handleComplete} />
     </div>
   );
