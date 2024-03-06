@@ -4,32 +4,27 @@ import './../styles/App.css';
 import { useState } from "react";
 
 const App = () => {
-  const [todo, setTodo] = useState([
-    { id: 1, name: "Learn React" },
-    { id: 2, name: "Build a React app" },
-    { id: 3, name: "Deploy the React app" },
+  const [todos, setTodos] = useState([
+    { id: 1, name: "Learn React", complete: false },
+    { id: 2, name: "Build a React app", complete: false },
+    { id: 3, name: "Deploy the React app", complete: false },
   ]);
-  const [clickedItems, setClickedItems] = useState([]);
 
-  const handleComplete = (id) => {
-    setClickedItems([...clickedItems, id]);
-  };
-
-  const isItemClicked = (id) => {
-    return clickedItems.includes(id);
+  const handleClick = (idx) => {
+    setTodos([...todos], (todos[idx].complete = !todos[idx].complete));
   };
 
   return (
     <div className="App">
-      <h1>Parent Component</h1>
-      <h2>Child Component</h2>
-      {todo.map((item) => (
+      <h1>Parent</h1>
+      <h2>Child</h2>
+      {todos.map((item, idx) => (
         <div key={item.id}>
           <ul>
             <li>
               {item.name}
-              {!isItemClicked(item.id) && (
-                <button onClick={() => handleComplete(item.id)}>Complete</button>
+              {!item.complete && (
+                <button onClick={() => handleClick(idx)}>Complete</button>
               )}
             </li>
           </ul>
