@@ -2,6 +2,7 @@
 import React from "react";
 import './../styles/App.css';
 import { useState } from "react";
+import Todo from "./Todo";
 
 const App = () => {
   const [todos, setTodos] = useState([
@@ -10,26 +11,14 @@ const App = () => {
     { id: 3, name: "Deploy the React app", complete: false },
   ]);
 
-  const handleClick = (idx) => {
+  const handleComplete = (idx) => {
     setTodos([...todos], (todos[idx].complete = !todos[idx].complete));
   };
 
   return (
     <div className="App">
-      <h1>Parent</h1>
-      <h2>Child</h2>
-      {todos.map((item, idx) => (
-        <div key={item.id}>
-          <ul>
-            <li>
-              {item.name}
-              {!item.complete && (
-                <button onClick={() => handleClick(idx)}>Complete</button>
-              )}
-            </li>
-          </ul>
-        </div>
-      ))}
+      <h1>Child Component</h1>
+      <Todo todos={todos} handleComplete={handleComplete} />
     </div>
   );
 }
